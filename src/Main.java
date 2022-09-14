@@ -9,6 +9,9 @@ public class Main extends Application {
     @Override
     public void start(Stage stage) {
 
+        Boneyard boneyard = new Boneyard();
+        boneyard.initDominos();
+
         GridPane grid = new GridPane();
 
         BorderPane mainPane = new BorderPane();
