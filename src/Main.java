@@ -4,10 +4,21 @@ import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.GridPane;
 import javafx.stage.Stage;
 
+import java.util.ArrayList;
+
 public class Main extends Application {
+
+    private Boneyard boneyard;
+    private Players players;
+    private ArrayList<Domino> humanHand;
+    private ArrayList<Domino> computerHand;
+
+
+
 
     @Override
     public void start(Stage stage) {
+
 
         Boneyard boneyard = new Boneyard();
         boneyard.initDominos();
