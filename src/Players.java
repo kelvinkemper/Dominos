@@ -4,32 +4,28 @@ public class Players{
 
     private Boneyard boneyard;
 
-    private ArrayList<Domino> humanHand;
+    private ArrayList<Domino> myHand;
     private ArrayList<Domino> computerHand;
 
+    /**
+     * Creates a new player for playing the game as well as taking 7 dominos from the boneyard
+     * @param boneyard
+     */
     public Players(Boneyard boneyard) {
         this.boneyard = boneyard;
-        this.humanHand = new ArrayList<>();
-        this.computerHand = new ArrayList<>();
+        this.myHand = new ArrayList<>();
         for (int i = 0; i < 7; i++) {
-            humanHand.add(boneyard.getDomino(i));
-            computerHand.add(boneyard.getDomino(i+1));
+            myHand.add(boneyard.getDomino(i));
             boneyard.removeDomino(i);
-            boneyard.removeDomino(i+1);
         }
-        System.out.println(humanHand);
-        System.out.println(computerHand);
     }
 
 
-
-
-    public ArrayList<Domino> getComputerHand() {
-        return computerHand;
-    }
-
-    public ArrayList<Domino> getHumanHand() {
-        return humanHand;
+    /**
+     * @return returns arraylist of myHand
+     */
+    public ArrayList<Domino> getMyHand() {
+        return myHand;
     }
 
 

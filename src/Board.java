@@ -1,0 +1,43 @@
+import java.util.ArrayList;
+
+public class Board {
+
+    private int currentLeftNumber;
+    private int currentRightNumber;
+    private ArrayList<Domino> board;
+
+    Board() {
+        this.board = new ArrayList<>();
+    }
+
+    /**
+     * Gets the list of all dominos on the board
+     * @return list of dominos on board
+     */
+    public ArrayList<Domino> getBoard() {
+        return board;
+    }
+
+    /**
+     * Checks if board is empty
+     * @return boolean value
+     */
+    public boolean isEmpty() {
+        return board.isEmpty();
+    }
+
+
+    public String toString() {
+        String str = "";
+        String firstLine = "";
+        String secondLine = "";
+        for (int i = 0; i < board.size(); i += 2) {
+            firstLine += board.get(i).getDomino().toString();
+        }
+        for (int i = 1; i < board.size(); i += 2) {
+            secondLine += board.get(i).getDomino().toString();
+        }
+        str = firstLine + "\n" + "    " + secondLine;
+        return str;
+    }
+}

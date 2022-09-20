@@ -1,7 +1,10 @@
+import java.util.LinkedList;
+
 public class Domino {
 
     private int left;
     private int right;
+    private LinkedList<Integer> domino;
 
     public Domino(int left, int right) {
         this.left = left;
@@ -31,6 +34,10 @@ public class Domino {
         int temp = left;
         left = right;
         right = temp;
+    }
+
+    public LinkedList<Integer> getDomino() {
+        return domino;
     }
 
     public String toString() {

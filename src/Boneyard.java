@@ -20,6 +20,7 @@ public class Boneyard {
                 //System.out.println(dominoList);
             }
         }
+
         Collections.shuffle(dominoList);
         //System.out.println(dominoList);
     }
