@@ -1,10 +1,13 @@
+package dominos;
+
+import java.util.ArrayList;
 import java.util.LinkedList;
 
 public class Domino {
 
     private int left;
     private int right;
-    private LinkedList<Integer> domino;
+    private ArrayList<Integer> domino;
 
     public Domino(int left, int right) {
         this.left = left;
@@ -17,6 +20,14 @@ public class Domino {
      */
     public int getLeft() {
         return left;
+    }
+
+    public boolean containsLeft(Domino num) {
+        return (this.left == num.left || this.right == num.left);
+    }
+
+    public boolean containsRight(Domino num) {
+        return this.left == num.right || this.right == num.right;
     }
 
     /**
@@ -36,7 +47,7 @@ public class Domino {
         right = temp;
     }
 
-    public LinkedList<Integer> getDomino() {
+    public ArrayList<Integer> getDomino() {
         return domino;
     }
 

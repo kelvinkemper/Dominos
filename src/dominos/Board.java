@@ -1,9 +1,10 @@
+package dominos;
+
 import java.util.ArrayList;
 
 public class Board {
 
-    private int currentLeftNumber;
-    private int currentRightNumber;
+
     private ArrayList<Domino> board;
 
     Board() {
@@ -18,6 +19,10 @@ public class Board {
         return board;
     }
 
+    public int getBoardSize() {
+        return board.size();
+    }
+
     /**
      * Checks if board is empty
      * @return boolean value
@@ -29,6 +34,14 @@ public class Board {
 
     public String toString() {
         String str = "";
+        for (int i = 0; i < board.size(); i++) {
+            str += board.get(i);
+        }
+        return str;
+    }
+
+  /**  public String toString() {
+        String str = "";
         String firstLine = "";
         String secondLine = "";
         for (int i = 0; i < board.size(); i += 2) {
@@ -39,5 +52,6 @@ public class Board {
         }
         str = firstLine + "\n" + "    " + secondLine;
         return str;
-    }
+    } */
+
 }
