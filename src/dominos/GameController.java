@@ -38,7 +38,7 @@ public class GameController {
         System.out.println("Dominos!");
         System.out.println("Computer has " + computerPlayer.getSize() + " dominos");
         System.out.println("Boneyard contains " + boneyard.getDominoListSize() + " domino");
-        System.out.println("\n" + "\n");
+        System.out.println("\n");
         gameLoop();
 
 
@@ -46,7 +46,7 @@ public class GameController {
 
     public void gameLoop() {
         for (int i =0; i < 3; i++) {
-            printHumanHand();
+            humanPlayer.printHumanHand();
             System.out.println("Human's turn");
             System.out.println("[p] Play Domino");
             System.out.println("[d] Draw from Boneyard");
@@ -62,6 +62,12 @@ public class GameController {
 
                         System.out.println("Left or Right? (l/r)");
                         String side = sc.nextLine();
+                        String sidePrint;
+                        if (side.equals("l")) {
+                            sidePrint = "left";
+                        } else {
+                            sidePrint = "right";
+                        }
 
                         System.out.println("Rotate First? (y/n)");
                         String flip = sc.nextLine();
@@ -74,6 +80,9 @@ public class GameController {
                         } else if (side.equals("r")) {
                             board.getBoard().add(dominoIndex);
                         }
+                        System.out.println("Playing " + dominoIndex + " at " + sidePrint);
+                        System.out.println("Computer has " + computerPlayer.getSize() + " dominos");
+                        System.out.println("Boneyard contains " + boneyard.getDominoListSize() + " domino");
 
                     }
                     System.out.println(board);
@@ -81,21 +90,6 @@ public class GameController {
             }
         }
 
-
-
-      /**  switch(c) {
-            case 'p':
-                if (board.isEmpty() || board.)
-        } */
-
-
-
-
-    }
-
-    public void printHumanHand() {
-        System.out.println("Your domino(s)");
-        System.out.println(humanPlayer.getMyHand());
     }
 
 

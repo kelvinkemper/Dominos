@@ -41,6 +41,10 @@ public class Players{
         return false;
     }
 
+    public void printHumanHand() {
+        System.out.println("Your dominos: " + getMyHand());
+    }
+
    /** public boolean playerHasMove() {
         boolean hasMove = false;
         if (emptyHand()) {
