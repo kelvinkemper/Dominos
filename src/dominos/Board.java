@@ -31,6 +31,21 @@ public class Board {
         return board.isEmpty();
     }
 
+    public boolean isLegalMove(Domino dom) {
+        if (dom.getRight() == getLeftMostNum() || dom.getLeft() == getRightMostNum()){
+            return true;
+        }
+        return false;
+    }
+
+
+    public int getLeftMostNum() {
+        return board.get(0).getLeft();
+    }
+
+    public int getRightMostNum() {
+        return board.get(getBoardSize()-1).getRight();
+    }
 
     public String toString() {
         String str = "";

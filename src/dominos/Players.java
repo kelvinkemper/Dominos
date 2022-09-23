@@ -5,13 +5,22 @@ import java.util.stream.Stream;
 
 public class Players{
     private ArrayList<Domino> hand;
-
-
-
+    private Board board;
 
 
     public void setMyHand(ArrayList<Domino> myHand) {
         hand = myHand;
+    }
+
+    public void drawFromBoneyard(Boneyard boneyard) {
+        if (!boneyard.isEmpty()) {
+            Domino drawDomino = boneyard.getDominoList().get(0);
+            hand.add(drawDomino);
+            boneyard.getDominoList().remove(drawDomino);
+        }
+        else {
+            System.out.println("Boneyard is empty.");
+        }
     }
 
 
@@ -31,18 +40,45 @@ public class Players{
     }
 
 
+    /**
+     * Boolean for if the player has a valid move or not
+     * @param board
+     * @return
+     */
     public boolean playerHasMove(Board board) {
         for (Domino domInHand : getMyHand()) {
             if ((domInHand.containsLeft(board.getBoard().get(0))) ||
-            (domInHand.containsRight(board.getBoard().get(board.getBoardSize()-1)))) {
+                    (domInHand.containsRight(board.getBoard().get(board.getBoardSize() - 1)))) {
                 return true;
+            } else {
+                System.out.println("Not a valid move");
             }
         }
         return false;
     }
 
+    /**
+     * Prints out what is in the human player's current hand
+     */
     public void printHumanHand() {
         System.out.println("Your dominos: " + getMyHand());
+    }
+
+    public void computerPlays() {
+        int leftBoard = board.getLeftMostNum();
+        int rightBoard = board.getRightMostNum();
+        ArrayList<Domino> useableDominos = new ArrayList<>();
+
+        for (Domino d : hand) {
+            if(board.isLegalMove(hand)) {
+
+        }
+    }
+
+
+
+
+
     }
 
    /** public boolean playerHasMove() {

@@ -32,7 +32,7 @@ public class GameController {
         computerPlayer.setMyHand(boneyard.fillPlayerHands());
 
         //TODO remove println
-      //  System.out.println(humanPlayer.getMyHand());
+       // System.out.println(humanPlayer.getMyHand());
        // System.out.println(computerPlayer.getMyHand());
 
         System.out.println("Dominos!");
@@ -45,7 +45,7 @@ public class GameController {
     }
 
     public void gameLoop() {
-        for (int i =0; i < 3; i++) {
+        for (int i =0; i < 15; i++) {
             humanPlayer.printHumanHand();
             System.out.println("Human's turn");
             System.out.println("[p] Play Domino");
@@ -54,43 +54,75 @@ public class GameController {
             char c = sc.nextLine().charAt(0);
             switch (c) {
                 case 'p':
-                    if (board.isEmpty() || humanPlayer.playerHasMove(board)) {
-                        System.out.println("Which domino?");
-                        String chosenDomino = sc.nextLine();
-                        dominoIndex = humanPlayer.getMyHand().get(Integer.parseInt(chosenDomino));
-                        humanPlayer.getMyHand().remove(Integer.parseInt(chosenDomino));
+                    playLoop();
+                case 'd':
+                    drawLoop();
+                case 'q':
+                    quitLoop();
+                    break;
 
-                        System.out.println("Left or Right? (l/r)");
-                        String side = sc.nextLine();
-                        String sidePrint;
-                        if (side.equals("l")) {
-                            sidePrint = "left";
-                        } else {
-                            sidePrint = "right";
-                        }
 
-                        System.out.println("Rotate First? (y/n)");
-                        String flip = sc.nextLine();
-                        if (flip.equals("y")) {
-                            dominoIndex.flipDomino();
-                        }
-
-                        if (side.equals("l")) {
-                            board.getBoard().add(0, dominoIndex);
-                        } else if (side.equals("r")) {
-                            board.getBoard().add(dominoIndex);
-                        }
-                        System.out.println("Playing " + dominoIndex + " at " + sidePrint);
-                        System.out.println("Computer has " + computerPlayer.getSize() + " dominos");
-                        System.out.println("Boneyard contains " + boneyard.getDominoListSize() + " domino");
-
-                    }
-                    System.out.println(board);
-
+               //TODO add case 'd' and 'q'
             }
+            System.out.println("Computer has " + computerPlayer.getSize() + " dominos");
+            System.out.println("Boneyard contains " + boneyard.getDominoListSize() + " domino");
+
         }
 
     }
+
+    public void playLoop() {
+        if (board.isEmpty() || humanPlayer.playerHasMove(board)) {
+            System.out.println("Which domino?");
+            String chosenDomino = sc.nextLine();
+            dominoIndex = humanPlayer.getMyHand().get(Integer.parseInt(chosenDomino));
+            humanPlayer.getMyHand().remove(Integer.parseInt(chosenDomino));
+
+            System.out.println("Left or Right? (l/r)");
+            String side = sc.nextLine();
+            String sidePrint;
+            if (side.equals("l")) {
+                sidePrint = "left";
+            } else {
+                sidePrint = "right";
+            }
+
+
+            System.out.println("Rotate First? (y/n)");
+            String flip = sc.nextLine();
+            if (flip.equals("y")) {
+                dominoIndex.flipDomino();
+            }
+
+            if (side.equals("l")) {
+                board.getBoard().add(0, dominoIndex);
+            } else if (side.equals("r")) {
+                board.getBoard().add(dominoIndex);
+            }
+
+
+
+
+            //TODO add computer's turn
+
+            System.out.println("Playing " + dominoIndex + " at " + sidePrint);
+
+
+        }
+        //TODO add what current board looks like currently 1d array
+        System.out.println(board);
+    }
+
+    public void drawLoop() {
+        humanPlayer.drawFromBoneyard(boneyard);
+
+    }
+
+    public void quitLoop() {
+        System.out.println("Game Over!");
+    }
+
+
 
 
 

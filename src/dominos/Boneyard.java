@@ -6,6 +6,7 @@ import java.util.Collections;
 public class Boneyard {
 
     private ArrayList<Domino> dominoList;
+    public ArrayList<Domino> playerHands;
 
     public Boneyard() {
         dominoList = new ArrayList<>();
@@ -21,7 +22,7 @@ public class Boneyard {
                 dominoList.add(new Domino(i,j));
             }
         }
-       System.out.println("all dominos pre shuffle:" + dominoList);
+        //System.out.println("all dominos pre shuffle:" + dominoList);
         Collections.shuffle(dominoList);
       //  System.out.println("all dominos post shuffle:" + dominoList);
     }
@@ -29,6 +30,9 @@ public class Boneyard {
     public ArrayList<Domino> getDominoList() {
         return dominoList;
     }
+
+
+
 
     public int getDominoListSize() {
         return dominoList.size();
@@ -39,7 +43,7 @@ public class Boneyard {
     }
 
     public ArrayList<Domino> fillPlayerHands() {
-      ArrayList<Domino> playerHands = new ArrayList<>();
+      playerHands = new ArrayList<>();
 
       for (int i = 0; i < 7; i++) {
           Domino domino = dominoList.get(i);
