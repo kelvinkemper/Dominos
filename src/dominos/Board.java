@@ -5,7 +5,7 @@ import java.util.ArrayList;
 public class Board {
 
 
-    private ArrayList<Domino> board;
+    public ArrayList<Domino> board;
 
     Board() {
         this.board = new ArrayList<>();
@@ -47,26 +47,26 @@ public class Board {
         return board.get(getBoardSize()-1).getRight();
     }
 
-    public String toString() {
+  /**  public String toString() {
         String str = "";
         for (int i = 0; i < board.size(); i++) {
             str += board.get(i);
         }
         return str;
-    }
+    } */
 
-  /**  public String toString() {
-        String str = "";
+    public String toString() {
+        String str;
         String firstLine = "";
         String secondLine = "";
         for (int i = 0; i < board.size(); i += 2) {
-            firstLine += board.get(i).getDomino().toString();
+            firstLine += board.get(i);
         }
         for (int i = 1; i < board.size(); i += 2) {
-            secondLine += board.get(i).getDomino().toString();
+            secondLine += board.get(i);
         }
-        str = firstLine + "\n" + "    " + secondLine;
+        str = firstLine + "\n" + "   " + secondLine;
         return str;
-    } */
+    }
 
 }

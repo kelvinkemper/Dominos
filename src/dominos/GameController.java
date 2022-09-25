@@ -55,22 +55,26 @@ public class GameController {
             switch (c) {
                 case 'p':
                     playLoop();
+                    break;
                 case 'd':
                     drawLoop();
                 case 'q':
                     quitLoop();
                     break;
-
-
-               //TODO add case 'd' and 'q'
+                default:
+                    System.out.println("Enter 'p' to Play, 'd' to Draw or 'q' to Quit the game.");
+                    break;
             }
-            System.out.println("Computer has " + computerPlayer.getSize() + " dominos");
-            System.out.println("Boneyard contains " + boneyard.getDominoListSize() + " domino");
+
 
         }
 
     }
 
+    /**
+     * Game loop, contains switch statement with "p", "d", and "q" which allows
+     * humans turn , then computer turns.
+     */
     public void playLoop() {
         if (board.isEmpty() || humanPlayer.playerHasMove(board)) {
             System.out.println("Which domino?");
@@ -100,17 +104,18 @@ public class GameController {
                 board.getBoard().add(dominoIndex);
             }
 
-
-
-
-            //TODO add computer's turn
-
             System.out.println("Playing " + dominoIndex + " at " + sidePrint);
-
+            System.out.println("Computer has " + computerPlayer.getSize() + " dominos");
+            System.out.println("Boneyard contains " + boneyard.getDominoListSize() + " domino");
+            System.out.println(board.toString());
+            humanPlayer.printHumanHand();
 
         }
-        //TODO add what current board looks like currently 1d array
-        System.out.println(board);
+        //computer's turn
+        computerPlayer.computerPlays(board, boneyard);
+        System.out.println("Computer has " + computerPlayer.getSize() + " dominos");
+        System.out.println("Boneyard contains " + boneyard.getDominoListSize() + " domino");
+        System.out.println(board.toString());
     }
 
     public void drawLoop() {
