@@ -3,6 +3,8 @@ package dominos;
 import java.util.Scanner;
 
 
+
+
 public class GameController {
 
     private Boneyard boneyard;
@@ -58,6 +60,7 @@ public class GameController {
                     break;
                 case 'd':
                     drawLoop();
+                    break;
                 case 'q':
                     quitLoop();
                     break;
@@ -65,8 +68,6 @@ public class GameController {
                     System.out.println("Enter 'p' to Play, 'd' to Draw or 'q' to Quit the game.");
                     break;
             }
-
-
         }
 
     }
@@ -76,11 +77,14 @@ public class GameController {
      * humans turn , then computer turns.
      */
     public void playLoop() {
-        if (board.isEmpty() || humanPlayer.playerHasMove(board)) {
-            System.out.println("Which domino?");
-            String chosenDomino = sc.nextLine();
-            dominoIndex = humanPlayer.getMyHand().get(Integer.parseInt(chosenDomino));
-            humanPlayer.getMyHand().remove(Integer.parseInt(chosenDomino));
+    //    boolean play = true;
+     //   while(play) {
+            if (!board.isEmpty() || humanPlayer.playerHasMove(board)) {
+                System.out.println("Which domino?");
+                String chosenDomino = sc.nextLine();
+                dominoIndex = humanPlayer.getMyHand().get(Integer.parseInt(chosenDomino));
+                humanPlayer.getMyHand().remove(Integer.parseInt(chosenDomino));
+            }
 
             System.out.println("Left or Right? (l/r)");
             String side = sc.nextLine();
@@ -110,25 +114,30 @@ public class GameController {
             System.out.println(board.toString());
             humanPlayer.printHumanHand();
 
-        }
-        //computer's turn
+
         computerPlayer.computerPlays(board, boneyard);
         System.out.println("Computer has " + computerPlayer.getSize() + " dominos");
         System.out.println("Boneyard contains " + boneyard.getDominoListSize() + " domino");
         System.out.println(board.toString());
     }
 
+        //computer's turn
+
+
+
     public void drawLoop() {
-        humanPlayer.drawFromBoneyard(boneyard);
+        if (!humanPlayer.playerHasMove(board)) {
+            humanPlayer.drawFromBoneyard(boneyard);
+        } else {
+            System.out.println("You can't draw if you have a playable domino.");
+        }
+
 
     }
 
     public void quitLoop() {
         System.out.println("Game Over!");
+        System.exit(0);
     }
-
-
-
-
 
 }

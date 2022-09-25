@@ -6,18 +6,21 @@ import java.util.ArrayList;
 public class Players{
     private ArrayList<Domino> hand;
 
-
-
-
     public void setMyHand(ArrayList<Domino> myHand) {
         hand = myHand;
     }
 
+    /**
+     * method for drawing a domino from the boneyard, adding to a players hand
+     * and removing domino from boneyard.
+     * @param boneyard boneyard containing remaining 14 dominos
+     */
     public void drawFromBoneyard(Boneyard boneyard) {
         if (!boneyard.isEmpty()) {
             Domino drawDomino = boneyard.getDominoList().get(0);
             hand.add(drawDomino);
             boneyard.getDominoList().remove(drawDomino);
+            System.out.println("Boneyard has " + boneyard.getDominoListSize() + " dominos left");
         }
         else {
             System.out.println("Boneyard is empty.");
@@ -32,10 +35,13 @@ public class Players{
         return hand;
     }
 
-    public boolean emptyHand() {
+    public boolean isEmptyHand() {
         return hand.isEmpty();
     }
 
+    /**
+     * @return size of hand
+     */
     public int getSize() {
         return hand.size();
     }
@@ -47,14 +53,20 @@ public class Players{
      * @return
      */
     public boolean playerHasMove(Board board) {
-        for (Domino domInHand : hand) {
-            if ((domInHand.containsLeft(board.getBoard().get(0))) ||
-                    (domInHand.containsRight(board.getBoard().get(board.getBoardSize() - 1)))
-                  || (domInHand.containsLeft(board.getBoard().get(board.getBoardSize()-1)))
-                  || (domInHand.containsRight(board.getBoard().get(0)))) {
-                return true;
-            } else {
-                System.out.println("Not a valid move");
+        if (board.isEmpty()) {
+            return true;
+        }
+        else {
+            for (Domino domInHand : hand) {
+                if ((domInHand.containsLeft(board.getBoard().get(0))) ||
+                        (domInHand.containsRight(board.getBoard().get(board.getBoardSize() - 1)))
+                        || (domInHand.containsLeft(board.getBoard().get(board.getBoardSize()-1)))
+                        || (domInHand.containsRight(board.getBoard().get(0)))) {
+                    return true;
+                } else {
+                    System.out.println("Not a valid move");
+                    return false;
+                }
             }
         }
         return false;
@@ -123,7 +135,6 @@ public class Players{
             if (search) {
                 drawFromBoneyard(boneyard);
                 System.out.println("Computer draws from the boneyard");
-                search = false;
             }
         }
     }

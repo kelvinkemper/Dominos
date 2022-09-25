@@ -22,10 +22,20 @@ public class Domino {
         return left;
     }
 
+    /**
+     *
+     * @param num
+     * @return
+     */
     public boolean containsLeft(Domino num) {
         return (this.left == num.left || this.right == num.left);
     }
 
+    /**
+     *
+     * @param num
+     * @return
+     */
     public boolean containsRight(Domino num) {
         return this.left == num.right || this.right == num.right;
     }
