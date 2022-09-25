@@ -1,16 +1,7 @@
 package dominos;
 
-import javafx.application.Application;
-import javafx.stage.Stage;
 
-public class Main extends Application {
-
-    @Override
-    public void start(Stage stage) {
-
-        GameController gameController = new GameController();
-        gameController.start();
-
+public class Main {
 
       /**  GridPane grid = new GridPane();
 
@@ -20,9 +11,10 @@ public class Main extends Application {
         stage.setScene(new Scene(mainPane));
         stage.show(); */
 
-    }
 
     public static void main(String[] args) {
-        launch(args);
+        GameController gameController = new GameController();
+        gameController.start();
+
     }
 }
