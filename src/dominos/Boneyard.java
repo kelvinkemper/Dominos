@@ -8,6 +8,8 @@ public class Boneyard {
     private ArrayList<Domino> dominoList;
     public ArrayList<Domino> playerHands;
 
+    private final int LARGESTDOMINOSIZE = 3;
+
     public Boneyard() {
         dominoList = new ArrayList<>();
     }
@@ -17,14 +19,14 @@ public class Boneyard {
      * Initializes all 28 dominos and shuffles them
      */
     public void initDominos() {
-        for (int i = 6; i >= 0; i--) {
+        for (int i = LARGESTDOMINOSIZE; i >= 0; i--) {
             for (int j = i; j >= 0; j--) {
                 dominoList.add(new Domino(i,j));
             }
         }
         //System.out.println("all dominos pre shuffle:" + dominoList);
         Collections.shuffle(dominoList);
-      //  System.out.println("all dominos post shuffle:" + dominoList);
+        System.out.println("all dominos post shuffle:" + dominoList);
     }
 
     public ArrayList<Domino> getDominoList() {
@@ -45,7 +47,7 @@ public class Boneyard {
     public ArrayList<Domino> fillPlayerHands() {
       playerHands = new ArrayList<>();
 
-      for (int i = 0; i < 7; i++) {
+      for (int i = 0; i <= 2; i++) {
           Domino domino = dominoList.get(i);
           playerHands.add(domino);
           dominoList.remove(domino);

@@ -10,6 +10,8 @@ public class Players{
         hand = myHand;
     }
 
+    private int turn;
+
     /**
      * method for drawing a domino from the boneyard, adding to a players hand
      * and removing domino from boneyard.
@@ -49,6 +51,8 @@ public class Players{
 
     /**
      * Boolean for if the player has a valid move or not
+     * when board is empty any move is valid else checks if
+     * first or last elemnt of board matches any domino in hand
      * @param board
      * @return
      */
@@ -57,19 +61,25 @@ public class Players{
             return true;
         }
         else {
-            for (Domino domInHand : hand) {
-                if ((domInHand.containsLeft(board.getBoard().get(0))) ||
-                        (domInHand.containsRight(board.getBoard().get(board.getBoardSize() - 1)))
-                        || (domInHand.containsLeft(board.getBoard().get(board.getBoardSize()-1)))
-                        || (domInHand.containsRight(board.getBoard().get(0)))) {
+            for (int i = 0; i < hand.size(); i++) {
+                if (hand.get(i).getLeft() == board.getRightMostNum() ||
+                        hand.get(i).getLeft() == board.getLeftMostNum() ||
+                        hand.get(i).getRight() == board.getRightMostNum() ||
+                        hand.get(i).getRight() == board.getLeftMostNum()) {
                     return true;
-                } else {
-                    System.out.println("Not a valid move");
-                    return false;
                 }
             }
+            return false;
         }
-        return false;
+    }
+
+    public boolean playerMoveMatches(Board board, Domino dom) {
+        if (board.isEmpty()) {
+            return true;
+        } else {
+            return (dom.getRight() == board.getLeftMostNum() ||
+                    dom.getLeft() == board.getRightMostNum());
+        }
     }
 
     /**
@@ -77,6 +87,20 @@ public class Players{
      */
     public void printHumanHand() {
         System.out.println("Your dominos: " + getMyHand());
+    }
+
+    public int countScores() {
+        int score = 0;
+
+        for (Domino domino : hand) {
+            score += domino.getRight() + domino.getLeft();
+        }
+        return score;
+    }
+
+    public int countTurns() {
+        return turn;
+
     }
 
     /**
@@ -132,9 +156,13 @@ public class Players{
                     break;
                 }
             }
+            turn++;
             if (search) {
                 drawFromBoneyard(boneyard);
                 System.out.println("Computer draws from the boneyard");
+            }
+            if (boneyard.isEmpty()){
+                break;
             }
         }
     }
