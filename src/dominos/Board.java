@@ -33,7 +33,8 @@ public class Board {
 
     public boolean isLegalMove(Domino dom) {
         while(!board.isEmpty()) {
-            if (dom.getRight() == getLeftMostNum() || dom.getLeft() == getRightMostNum()) {
+            if (dom.getRight() == getLeftMostNum() || dom.getLeft() == getRightMostNum()
+            || dom.getRight() == 0 || dom.getLeft() == 0 || getRightMostNum() == 0 || getLeftMostNum() == 0) {
                 return true;
             }
             else {

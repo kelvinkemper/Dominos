@@ -76,9 +76,8 @@ public class GameController {
      */
     public void playLoop() {
         boolean play = true;
-
         while (play) {
-            if (humanPlayer.playerHasMove(board)) {
+            if (humanPlayer.playerHasLegitMove(board)) {
                 System.out.println("Which domino?");
                 String chosenDomino = sc.nextLine();
                 while(!(Integer.parseInt(chosenDomino) < humanPlayer.getSize())) {
@@ -130,6 +129,7 @@ public class GameController {
                 System.out.println("Move is not legal");
                 break;
             }
+            checkWinCondition();
 
             printComputerandBoneyardSize();
             System.out.println(board.toString());
@@ -140,7 +140,9 @@ public class GameController {
             System.out.println(board.toString());
             play = false;
             turns++;
+            checkWinCondition();
         }
+
     }
             //computer's turn
 
@@ -152,11 +154,17 @@ public class GameController {
         System.out.println("Boneyard contains " + boneyard.getDominoListSize() + " domino");
     }
 
+    public void checkWinCondition() {
+        if (boneyard.isEmpty() || humanPlayer.isEmptyHand() || computerPlayer.isEmptyHand()) {
+            quit();
+        }
+    }
+
     /**
      * If d is typed during play(), this will draw from the boneyard into the players hand if possible
      */
     public void drawLoop() {
-        if (!humanPlayer.playerHasMove(board)) {
+        if (!humanPlayer.playerHasLegitMove(board)) {
             humanPlayer.drawFromBoneyard(boneyard);
         } else {
             System.out.println("You can't draw if you have a playable domino.");

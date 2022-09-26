@@ -56,11 +56,15 @@ public class Players{
      * @param board
      * @return
      */
-    public boolean playerHasMove(Board board) {
+    public boolean playerHasLegitMove(Board board) {
         if (board.isEmpty()) {
             return true;
         }
         else {
+            for (Domino d: hand) {
+                if (d.getLeft() == 0 || d.getRight() == 0);
+
+            }
             for (int i = 0; i < hand.size(); i++) {
                 if (hand.get(i).getLeft() == board.getRightMostNum() ||
                         hand.get(i).getLeft() == board.getLeftMostNum() ||
@@ -70,15 +74,6 @@ public class Players{
                 }
             }
             return false;
-        }
-    }
-
-    public boolean playerMoveMatches(Board board, Domino dom) {
-        if (board.isEmpty()) {
-            return true;
-        } else {
-            return (dom.getRight() == board.getLeftMostNum() ||
-                    dom.getLeft() == board.getRightMostNum());
         }
     }
 
@@ -136,20 +131,27 @@ public class Players{
         boolean search = true;
         while (search) {
             for (int i = 0; i < hand.size(); i++) {
-                if (hand.get(i).getLeft() == board.getRightMostNum()) {
+                if (hand.get(i).getLeft() == board.getRightMostNum() ||
+                        hand.get(i).getLeft() == 0 || board.getRightMostNum() == 0) {
                     computerAddtoEnd(board, i);
                     search = false;
                     break;
-                } else if (hand.get(i).getLeft() == board.getLeftMostNum()) {
+
+                } else if (hand.get(i).getLeft() == board.getLeftMostNum() ||
+                        hand.get(i).getLeft() == 0 || board.getLeftMostNum() == 0) {
                     hand.get(i).flipDomino();
                     computerAddtoBeginning(board, i);
                     search = false;
                     break;
-                } else if (hand.get(i).getRight() == board.getLeftMostNum()) {
+
+                } else if (hand.get(i).getRight() == board.getLeftMostNum() ||
+                        hand.get(i).getRight() == 0 || board.getLeftMostNum() == 0) {
                     computerAddtoBeginning(board, i);
                     search = false;
                     break;
-                } else if (hand.get(i).getRight() == board.getRightMostNum()) {
+
+                } else if (hand.get(i).getRight() == board.getRightMostNum() ||
+                        hand.get(i).getRight() == 0 || board.getRightMostNum() == 0) {
                     hand.get(i).flipDomino();
                     computerAddtoEnd(board, i);
                     search = false;
