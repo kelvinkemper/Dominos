@@ -32,17 +32,25 @@ public class Board {
     }
 
     public boolean isLegalMove(Domino dom) {
-        while(!board.isEmpty()) {
-            if (dom.getRight() == getLeftMostNum() || dom.getLeft() == getRightMostNum()
-            || dom.getRight() == 0 || dom.getLeft() == 0 || getRightMostNum() == 0 || getLeftMostNum() == 0) {
-                return true;
+        int x;
+        while (!board.isEmpty()) {
+            if (dom.getRight() == getLeftMostNum()) {
+                x = dom.getRight();
+                if (x == 0 || this.getLeftMostNum() == 0 || x == this.getLeftMostNum()) {
+                    return true;
+                } else {
+                    return false;
+                }
             }
             else {
-                return false;
+                x = dom.getLeft();
+                if (x == 0 || this.getRightMostNum() == 0 || x == this.getRightMostNum()) {
+                    return true;
+                } else {
+                    return false;
+                }
             }
-
-        }
-        return true;
+        } return true;
     }
 
 

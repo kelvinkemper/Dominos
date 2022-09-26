@@ -126,7 +126,6 @@ public class Players{
      * @param boneyard used for when drawing from boneyard
      */
     public void computerPlays(Board board,Boneyard boneyard) {
-       //TODO REMOVE System.out.println("Computer hand: " + hand);
         System.out.println("Computer's turn");
         boolean search = true;
         while (search) {

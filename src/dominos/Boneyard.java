@@ -8,7 +8,7 @@ public class Boneyard {
     private ArrayList<Domino> dominoList;
     public ArrayList<Domino> playerHands;
 
-    private final int LARGESTDOMINOSIZE = 3;
+    private final int LARGESTDOMINOSIZE = 6;
 
     public Boneyard() {
         dominoList = new ArrayList<>();
@@ -47,7 +47,7 @@ public class Boneyard {
     public ArrayList<Domino> fillPlayerHands() {
       playerHands = new ArrayList<>();
 
-      for (int i = 0; i <= 2; i++) {
+      for (int i = 0; i <= 6; i++) {
           Domino domino = dominoList.get(i);
           playerHands.add(domino);
           dominoList.remove(domino);

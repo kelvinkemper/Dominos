@@ -31,10 +31,6 @@ public class GameController {
         humanPlayer.setMyHand(boneyard.fillPlayerHands());
         computerPlayer.setMyHand(boneyard.fillPlayerHands());
 
-        //TODO remove println
-       // System.out.println(humanPlayer.getMyHand());
-       // System.out.println(computerPlayer.getMyHand());
-
         System.out.println("Dominos!");
         System.out.println("Computer has " + computerPlayer.getSize() + " dominos");
         System.out.println("Boneyard contains " + boneyard.getDominoListSize() + " domino");
