@@ -96,7 +96,7 @@ public class Display extends Application {
 
         vBox.setPadding(new Insets(0, 25, 0, dd.WIDTH/2));
 
-        Background bg = new Background(new BackgroundFill(Color.SADDLEBROWN, CornerRadii.EMPTY, Insets.EMPTY));
+        Background bg = new Background(new BackgroundFill(Color.GREEN, CornerRadii.EMPTY, Insets.EMPTY));
         vBox.setBackground(bg);
 
         root.setCenter(vBox);
@@ -139,8 +139,8 @@ public class Display extends Application {
      * Draws up the board for user to see
      */
     public void renderBoard(String prevSide) {
-        System.out.println("board list == " + board.getBoard());
-        System.out.println("base case index: " + board.getBoard().indexOf(baseCase) + "base case domino == " + baseCase);
+        //System.out.println("board list == " + board.getBoard());
+        //System.out.println("base case index: " + board.getBoard().indexOf(baseCase) + "base case domino == " + baseCase);
         hBox1.getChildren().clear();
         hBox2.getChildren().clear();
         top.clear();
