@@ -111,7 +111,7 @@ public class Players {
      * @param index what domino in hand to add to board
      */
     public void computerAddToEnd(Board board, int index) {
-        System.out.println("Computer plays " + hand.get(index) + " at right");
+        //System.out.println("Computer plays " + hand.get(index) + " at right");
         board.getBoard().add(hand.get(index));
         hand.remove(index);
         side = "r";
@@ -123,7 +123,7 @@ public class Players {
      * @param index what domino in hand to add to board
      */
     public void computerAddToBeginning(Board board, int index) {
-        System.out.println("Computer plays " + hand.get(index) + " at left");
+       // System.out.println("Computer plays " + hand.get(index) + " at left");
         board.getBoard().add(0,hand.get(index));
         hand.remove(index);
         side = "l";

@@ -35,25 +35,25 @@ public class Board {
         int sideValue;
         int checkLeft;
         int checkRight;
-        System.out.println("Side chosen: " + side);
+        //System.out.println("Side chosen: " + side);
 
         if (board.isEmpty()){
             return true;
         } else {
             while (!board.isEmpty()) {
-                System.out.println(dom);
-                System.out.println(getBoard());
+               // System.out.println(dom);
+              //  System.out.println(getBoard());
                 if (side.equals("left")) {
                     sideValue = dom.getRight();
                     checkLeft = this.getLeftMostNum();
-                    System.out.println("left value: " + sideValue + " vs left list number: " + checkLeft);
+                   // System.out.println("left value: " + sideValue + " vs left list number: " + checkLeft);
                     if (sideValue == 0 || checkLeft == 0 || sideValue == checkLeft) {
                         return true;
                     }
                 } else {
                     sideValue = dom.getLeft();
                     checkRight = this.getRightMostNum();
-                    System.out.println("right values: " + checkRight + " vs right list number: " + sideValue);
+                   // System.out.println("right values: " + checkRight + " vs right list number: " + sideValue);
                     if (sideValue == 0 || checkRight == 0 || sideValue == checkRight) {
                         return true;
                     }

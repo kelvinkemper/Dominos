@@ -198,14 +198,14 @@ public class Display extends Application {
         if (top.size() != 0 && top.size() == bottom.size() && prevSide.equals("r") && filler ==0) {
             hBox1.getChildren().add(fillRectangle());
         } else if (top.size() != 0 && top.size() == bottom.size() && prevSide.equals("l") && filler == 0) {
-            System.out.println("left");
+           // System.out.println("left");
             hBox1.getChildren().add(0,fillRectangle());
         }
 
         if (top.size() != 0 && top.size() == bottom.size() && prevSide.equals("r") && filler ==1) {
             hBox1.getChildren().add(0,fillRectangle());
         } else if (top.size() != 0 && top.size() == bottom.size() && prevSide.equals("l") && filler == 1) {
-            System.out.println("left");
+           // System.out.println("left");
             hBox1.getChildren().add(fillRectangle());
 
         }
@@ -403,7 +403,7 @@ public class Display extends Application {
     }
 
     private void rotateGUIDomino() {
-        System.out.println(humanPlayerHand.get(gameController.getHumanPlayerHandIndex()));
+       // System.out.println(humanPlayerHand.get(gameController.getHumanPlayerHandIndex()));
         humanPlayerHand.get(gameController.getHumanPlayerHandIndex()).flipDomino();
         renderHumanHand();
     }

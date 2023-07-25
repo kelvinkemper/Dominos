@@ -21,4 +21,7 @@ This is a two-part project and should include the command line.jar and GUI.jar. 
 * Game ends when the last domino from the boneyard and any player's hand is played. 
 * If game ends in a tie, then whoever has the lowest amount of domino totals will win.
 
---
+---
+![](resources/gameplay%20visual.png)
+---
+![](resources/illegal%20move%20error.png)
