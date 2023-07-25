@@ -1,4 +1,4 @@
-CS 351L Project 3 Domino Game
+Domino Game - CS 351L Project 3 
 ===
 
 **How to run the program**
